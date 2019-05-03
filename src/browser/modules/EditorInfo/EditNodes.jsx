@@ -19,6 +19,7 @@ import { getStringValue } from './utils'
 export class EditNodes extends Component {
   render () {
     let content = null
+    let itemType = <div>Type :{this.props.entityType}</div>
     content = _.map(this.props.nodeProperties, (value, key) => {
       return (
         <div key={key}>
@@ -33,6 +34,7 @@ export class EditNodes extends Component {
         <DrawerBody>
           <DrawerSection>
             <DrawerSectionBody>
+              <DrawerSubHeader>{itemType}</DrawerSubHeader>
               <DrawerSubHeader>
                 properties:
                 {content}
