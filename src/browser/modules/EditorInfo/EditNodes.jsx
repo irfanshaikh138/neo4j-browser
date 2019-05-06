@@ -15,11 +15,11 @@ import {
 
 import * as _ from 'lodash'
 import { getStringValue } from './utils'
+import { EntityType } from './EntityType'
 
 export class EditNodes extends Component {
   render () {
     let content = null
-    let itemType = <div>Type :{this.props.entityType}</div>
     content = _.map(this.props.nodeProperties, (value, key) => {
       return (
         <div key={key}>
@@ -33,13 +33,9 @@ export class EditNodes extends Component {
         <DrawerHeader>Editor</DrawerHeader>
         <DrawerBody>
           <DrawerSection>
-            <DrawerSectionBody>
-              <DrawerSubHeader>{itemType}</DrawerSubHeader>
-              <DrawerSubHeader>
-                properties:
-                {content}
-              </DrawerSubHeader>
-            </DrawerSectionBody>
+            <EntityType itemType={this.props.entityType} />
+            <DrawerSubHeader> Properties</DrawerSubHeader>
+            <DrawerSectionBody>{content}</DrawerSectionBody>
           </DrawerSection>
         </DrawerBody>
       </Drawer>
