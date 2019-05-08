@@ -21,13 +21,17 @@ import { NodeLabel } from './NodeLabel'
 export class EditNodes extends Component {
   render () {
     let content = null
-    content = _.map(this.props.nodeProperties, (value, key) => {
-      return (
-        <div key={key}>
-          {key}:{getStringValue(value)}
-        </div>
-      )
-    })
+    typeof this.props.nodeProperties !== 'object'
+      ? (content = _.map(this.props.nodeProperties, (value, key) => {
+        return (
+          <div key={key}>
+            {key}:{getStringValue(value)}
+          </div>
+        )
+      }))
+      : (content = _.map(this.props.nodeProperties, (value, key) => {
+        return key + ': ' + this.props.nodeProperties[key]
+      }))
 
     return (
       <Drawer id='db-drawer'>
